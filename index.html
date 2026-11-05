@@ -287,7 +287,7 @@
     <span class="bee">🐝</span> BeeLead
   </div>
   <h1 id="page-title">سياسة الخصوصية</h1>
-  <p class="sub" id="page-sub">آخر تحديث: 26 سبتمبر 2026</p>
+  <p class="sub" id="page-sub">آخر تحديث: 6 نوفمبر 2026</p>
 
   <div class="lang-toggle" role="group" aria-label="Language">
     <button id="btn-ar" class="active" type="button">العربية</button>
@@ -314,8 +314,9 @@
       <div class="callout info">
         <strong>ملخّص سريع:</strong> BeeLead تطبيق لمساعدتك على تسجيل العملاء المحتملين
         من المكالمات الواردة. تُخزَّن بياناتك <strong>محلياً على جهازك</strong> بشكل أساسي،
-        ولا نبيع بياناتك ولا نشاركها مع أي طرف ثالث لأغراض تسويقية. لا نجمع بياناتك إلا
-        بالقدر اللازم لتقديم الخدمة.
+        ولا نبيع بياناتك ولا نشاركها مع أي طرف ثالث لأغراض تسويقية. نجمع
+        <strong>تحليلات استخدام مجهولة الهوية</strong> (عبر Firebase Analytics) لتحسين التطبيق،
+        ولا نجمع من بياناتك إلا بالقدر اللازم لتقديم الخدمة.
       </div>
 
       <div class="toc">
@@ -385,6 +386,11 @@
         <li>سجلات الأخطاء والاستثناءات لأغراض التشخيص وإصلاح المشكلات فقط.</li>
         <li>معرّف جهاز مجهول الهوية (Anonymous Device ID) يُولَّد عشوائياً لمنع
           تكرار تقارير الأخطاء.</li>
+        <li><strong>تحليلات استخدام مجهولة الهوية</strong> عبر Firebase Analytics:
+          عدّادات أحداث مجمّعة وغير شخصية (مثل «تم تسجيل عميل»، «تم ضبط تذكير»،
+          «تمت مشاهدة شاشة الترقية») وخصائص على مستوى الجهاز (تفضيل اللغة، حالة
+          الاشتراك المميّز). <strong>لا تُرسَل أي أرقام هواتف أو أسماء أو ملاحظات
+          أو رسائل أو أي محتوى يُمكن تحديد هويتك منه</strong> إلى التحليلات.</li>
       </ul>
 
       <h3>2.6 إعدادات التطبيق</h3>
@@ -432,7 +438,9 @@
       </ul>
       <div class="callout">
         <strong>لا نستخدم بياناتك للإعلانات، ولا نبيعها، ولا نشاركها مع أي طرف ثالث
-        لأغراض تسويقية. لا يوجد في التطبيق أي متتبعات إعلانية.</strong>
+        لأغراض تسويقية. لا يوجد في التطبيق أي متتبعات إعلانية. تُرسَل تحليلات
+        استخدام مجهولة الهوية (عدّادات أحداث فقط — بدون أي محتوى شخصي) إلى
+        Firebase Analytics لمساعدتنا على تحسين التطبيق.</strong>
       </div>
 
       <h2 id="ar-5">5. تخزين البيانات وأمنها</h2>
@@ -443,7 +451,10 @@
         <li>يتم استثناء قاعدة البيانات والسجلات من النسخ الاحتياطي التلقائي لنظام
           Android في ملفات <code>backup_rules.xml</code> و
           <code>data_extraction_rules.xml</code>.</li>
-        <li>لا تُرسَل بياناتك إلى خوادمنا — لا نمتلك خوادم تجمع بياناتك الشخصية.</li>
+        <li>بياناتك الشخصية (جهات الاتصال، العملاء المحتملون، الملاحظات،
+          التسجيلات) <strong>لا تُرسَل أبداً</strong> إلى أي خادم نديره — لا نمتلك
+          خوادم تجمع بياناتك الشخصية. تُرسَل تحليلات الاستخدام المجهولة الهوية
+          (عدّادات الأحداث فقط) إلى Firebase Analytics — راجع القسمين 2.5 و 6.</li>
       </ul>
 
       <h2 id="ar-6">6. خدمات الطرف الثالث</h2>
@@ -452,6 +463,13 @@
         <li><strong>Google Play Services</strong> — لتحديثات التطبيق داخل التطبيق
           (In-App Updates). راجع
           <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">سياسة خصوصية Google</a>.</li>
+        <li><strong>Firebase Analytics</strong> — إحصاءات استخدام مجهولة الهوية
+          ومجمّعة (عدّادات أحداث، اللغة، حالة الاشتراك المميّز) لمساعدتنا على فهم
+          الميزات الأكثر استخداماً وتحسين التطبيق. لا يُرسَل أي محتوى شخصي.
+          راجع <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">خصوصية Firebase</a>.</li>
+        <li><strong>Google Play In-App Review API</strong> — لطلب تقييمك للتطبيق
+          على متجر Play بعد تسجيلك لعدد من العملاء المحتملين. تتحكّم Google في
+          متى (وما إذا كانت) ستظهر نافذة التقييم.</li>
         <li><strong>Google Sign-In</strong> — فقط عند تسجيل دخولك للنسخ الاحتياطي
           على Drive.</li>
         <li><strong>Google Drive API</strong> — لتخزين نسخة احتياطية داخل حسابك
@@ -474,6 +492,9 @@
       <p>لا نشارك بياناتك مع أي طرف ثالث، إلا في الحالات التالية:</p>
       <ul>
         <li>عند موافقتك الصريحة (مثل النسخ الاحتياطي على Drive الخاص بك).</li>
+        <li><strong>تحليلات استخدام مجهولة الهوية ومجمّعة</strong> تُشارَك مع
+          Google (Firebase) بصفتها معالج التحليلات لدينا — تشمل عدّادات الأحداث
+          وخصائص على مستوى الجهاز فقط، ولا تشمل أي محتوى شخصي أبداً.</li>
         <li>عند الالتزام القانوني (طلب رسمي من جهة قضائية مختصة).</li>
       </ul>
 
@@ -491,6 +512,11 @@
         <li><strong>التصدير:</strong> يمكنك تصدير بياناتك كملف Excel أو PDF.</li>
         <li><strong>الحذف:</strong> يمكنك حذف عميل محتمل أو جميع البيانات من الإعدادات.</li>
         <li><strong>سحب الأذونات:</strong> يمكنك إلغاء أي إذن من إعدادات Android.</li>
+        <li><strong>طلب حذف التحليلات:</strong> نظراً لعدم وجود حسابات مستخدمين
+          في التطبيق، لا يوجد زر داخل التطبيق لحذف تحليلاتك المجهولة. لطلب
+          الحذف، راسلنا على <a href="mailto:salimsabbah2022@gmail.com">salimsabbah2022@gmail.com</a>
+          مع ذكر معرّف تثبيت Firebase لجهازك (يظهر في الإعدادات ← التشخيصات)،
+          وسنقوم بحذفه من لوحة تحكم Firebase خلال 30 يوماً.</li>
       </ul>
 
       <h2 id="ar-11">11. خصوصية الأطفال</h2>
@@ -532,8 +558,9 @@
         <strong>Quick summary:</strong> BeeLead helps you capture potential leads from
         incoming phone calls. Your data is stored <strong>locally on your device</strong>
         by default. We do not sell your data, and we do not share it with third parties
-        for marketing. We only collect what is strictly necessary to deliver the
-        service.
+        for marketing. We collect <strong>anonymous usage analytics</strong> (via
+        Firebase Analytics) to improve the App, and we only collect what is strictly
+        necessary to deliver the service.
       </div>
 
       <div class="toc">
@@ -605,6 +632,12 @@
         <li>Device model, Android version, app version.</li>
         <li>Crash and error logs — used <em>solely</em> for debugging and stability.</li>
         <li>A randomly generated anonymous device ID to deduplicate error reports.</li>
+        <li><strong>Anonymous usage analytics</strong> via Firebase Analytics:
+          aggregated, non-personal event counts (e.g. <code>lead_captured</code>,
+          <code>reminder_set</code>, <code>premium_viewed</code>) and device-level
+          properties (language preference, premium status). <strong>No phone numbers,
+          names, notes, messages, or any personally identifiable content</strong> is
+          ever sent to analytics.</li>
       </ul>
 
       <h3>2.6 App Settings</h3>
@@ -653,7 +686,8 @@
       <div class="callout">
         <strong>We do NOT use your data for advertising, we do NOT sell it, and we
         do NOT share it with third parties for marketing. The App contains no ad
-        trackers.</strong>
+        trackers. Anonymous usage analytics (event counts only — no personal
+        content) are sent to Firebase Analytics to help us improve the App.</strong>
       </div>
 
       <h2 id="en-5">5. Data Storage &amp; Security</h2>
@@ -663,8 +697,10 @@
           <strong>Android Keystore / flutter_secure_storage</strong>.</li>
         <li>The database and logs are excluded from Android's automatic backup via
           <code>backup_rules.xml</code> and <code>data_extraction_rules.xml</code>.</li>
-        <li>Your data is <strong>never</strong> transmitted to any server we operate —
-          we do not maintain any backend that collects personal data.</li>
+        <li>Your personal data (contacts, leads, notes, recordings) is <strong>never</strong>
+          transmitted to any server we operate — we do not maintain a backend that
+          collects personal data. Anonymous usage analytics (event counts only) are
+          sent to Firebase Analytics — see sections 2.5 and 6.</li>
       </ul>
 
       <h2 id="en-6">6. Third-Party Services</h2>
@@ -672,6 +708,13 @@
       <ul>
         <li><strong>Google Play Services</strong> — In-App Updates. See
           <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</li>
+        <li><strong>Firebase Analytics</strong> — anonymous, aggregated usage
+          statistics (event counts, language, premium status) to help us understand
+          which features are used and improve the App. No personal content is sent.
+          See <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Firebase Privacy</a>.</li>
+        <li><strong>Google Play In-App Review API</strong> — to prompt you to rate
+          the App on the Play Store after you've captured several leads. Google
+          controls when (and whether) the review dialog appears.</li>
         <li><strong>Google Sign-In</strong> — only when you sign in for Drive backup.</li>
         <li><strong>Google Drive API</strong> — to store backups inside your own
           Google account.</li>
@@ -693,6 +736,9 @@
       <p>We do not share your data with third parties except:</p>
       <ul>
         <li>With your explicit consent (e.g., your own Drive backup).</li>
+        <li><strong>Anonymous, aggregated usage analytics</strong> are shared with
+          Google (Firebase) as our analytics processor — this includes event counts
+          and device-level properties only, never personal content.</li>
         <li>When required by law (a valid legal request from a competent authority).</li>
       </ul>
 
@@ -710,6 +756,13 @@
         <li><strong>Export:</strong> export your data as Excel or PDF.</li>
         <li><strong>Delete:</strong> delete any lead or all data from Settings.</li>
         <li><strong>Revoke permissions:</strong> revoke any permission from Android Settings.</li>
+        <li><strong>Request analytics deletion:</strong> because the App has no user
+          accounts, there is no in-app button to delete your anonymous analytics. To
+          request deletion, email us at
+          <a href="mailto:salimsabbah2022@gmail.com">salimsabbah2022@gmail.com</a>
+          with your device's Firebase Installation ID (visible in the App's Settings
+          &rarr; Diagnostics) and we will action the deletion from the Firebase Console
+          within 30 days.</li>
       </ul>
 
       <h2 id="en-11">11. Children's Privacy</h2>
@@ -754,7 +807,9 @@
         potenciales de las llamadas entrantes. Tus datos se almacenan
         <strong>localmente en tu dispositivo</strong> de forma predeterminada. No
         vendemos tus datos ni los compartimos con terceros para fines de marketing.
-        Solo recopilamos lo estrictamente necesario para prestar el servicio.
+        Recopilamos <strong>analíticas de uso anónimas</strong> (vía Firebase
+        Analytics) para mejorar la Aplicación, y solo recopilamos lo estrictamente
+        necesario para prestar el servicio.
       </div>
 
       <div class="toc">
@@ -830,6 +885,12 @@
           depuración y estabilidad.</li>
         <li>Un ID de dispositivo anónimo generado aleatoriamente para deduplicar
           informes de errores.</li>
+        <li><strong>Analíticas de uso anónimas</strong> vía Firebase Analytics:
+          conteos de eventos agregados y no personales (p. ej. <code>lead_captured</code>,
+          <code>reminder_set</code>, <code>premium_viewed</code>) y propiedades a
+          nivel de dispositivo (preferencia de idioma, estado premium). <strong>Nunca
+          se envían a las analíticas números de teléfono, nombres, notas, mensajes ni
+          ningún contenido identificable.</strong></li>
       </ul>
 
       <h3>2.6 Configuración de la Aplicación</h3>
@@ -881,7 +942,9 @@
       <div class="callout">
         <strong>NO utilizamos tus datos para publicidad, NO los vendemos, y NO los
         compartimos con terceros para fines de marketing. La Aplicación no contiene
-        rastreadores publicitarios.</strong>
+        rastreadores publicitarios. Las analíticas de uso anónimas (solo conteos de
+        eventos — sin contenido personal) se envían a Firebase Analytics para
+        ayudarnos a mejorar la Aplicación.</strong>
       </div>
 
       <h2 id="es-5">5. Almacenamiento y Seguridad de Datos</h2>
@@ -893,8 +956,11 @@
         <li>La base de datos y los registros están excluidos de la copia de seguridad
           automática de Android mediante <code>backup_rules.xml</code> y
           <code>data_extraction_rules.xml</code>.</li>
-        <li>Tus datos <strong>nunca</strong> se transmiten a ningún servidor que
-          operemos — no mantenemos ningún backend que recopile datos personales.</li>
+        <li>Tus datos personales (contactos, clientes potenciales, notas,
+          grabaciones) <strong>nunca</strong> se transmiten a ningún servidor que
+          operemos — no mantenemos ningún backend que recopile datos personales.
+          Las analíticas de uso anónimas (solo conteos de eventos) se envían a
+          Firebase Analytics — consulta las secciones 2.5 y 6.</li>
       </ul>
 
       <h2 id="es-6">6. Servicios de Terceros</h2>
@@ -903,6 +969,14 @@
         <li><strong>Google Play Services</strong> — Actualizaciones dentro de la App
           (In-App Updates). Consulta la
           <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de Privacidad de Google</a>.</li>
+        <li><strong>Firebase Analytics</strong> — estadísticas de uso anónimas y
+          agregadas (conteos de eventos, idioma, estado premium) para ayudarnos a
+          entender qué funciones se usan y mejorar la Aplicación. No se envía ningún
+          contenido personal. Consulta
+          <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Privacidad de Firebase</a>.</li>
+        <li><strong>Google Play In-App Review API</strong> — para pedirte que califiques
+          la Aplicación en Play Store después de que hayas capturado varios clientes
+          potenciales. Google controla cuándo (y si) aparece el diálogo de reseña.</li>
         <li><strong>Google Sign-In</strong> — solo cuando inicias sesión para la
           copia de seguridad en Drive.</li>
         <li><strong>Google Drive API</strong> — para almacenar copias de seguridad
@@ -926,6 +1000,10 @@
       <ul>
         <li>Con tu consentimiento explícito (p. ej., tu propia copia de seguridad en
           Drive).</li>
+        <li><strong>Analíticas de uso anónimas y agregadas</strong> se comparten con
+          Google (Firebase) como nuestro procesador de analíticas — esto incluye
+          conteos de eventos y propiedades a nivel de dispositivo solamente, nunca
+          contenido personal.</li>
         <li>Cuando lo exija la ley (una solicitud legal válida de una autoridad
           competente).</li>
       </ul>
@@ -948,6 +1026,13 @@
           los datos desde Ajustes.</li>
         <li><strong>Revocar permisos:</strong> revocar cualquier permiso desde los
           Ajustes de Android.</li>
+        <li><strong>Solicitar eliminación de analíticas:</strong> como la Aplicación
+          no tiene cuentas de usuario, no hay un botón dentro de la app para eliminar
+          tus analíticas anónimas. Para solicitar la eliminación, envíanos un correo
+          a <a href="mailto:salimsabbah2022@gmail.com">salimsabbah2022@gmail.com</a>
+          con el ID de instalación de Firebase de tu dispositivo (visible en Ajustes
+          &rarr; Diagnósticos de la Aplicación) y realizaremos la eliminación desde la
+          consola de Firebase dentro de los 30 días.</li>
       </ul>
 
       <h2 id="es-11">11. Privacidad de Menores</h2>
@@ -986,9 +1071,9 @@
 <script>
   // ── Page title & subtitle per language ───────────────────────────
   const PAGE_TITLES = {
-    ar: { title: 'سياسة الخصوصية', sub: 'آخر تحديث: 26 سبتمبر 2026' },
-    en: { title: 'Privacy Policy',  sub: 'Last updated: September 26, 2026' },
-    es: { title: 'Política de Privacidad', sub: 'Última actualización: 26 de septiembre de 2026' }
+    ar: { title: 'سياسة الخصوصية', sub: 'آخر تحديث: 6 نوفمبر 2026' },
+    en: { title: 'Privacy Policy',  sub: 'Last updated: November 6, 2026' },
+    es: { title: 'Política de Privacidad', sub: 'Última actualización: 6 de noviembre de 2026' }
   };
 
   const LANGS   = ['ar', 'en', 'es'];
