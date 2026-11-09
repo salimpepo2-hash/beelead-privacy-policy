@@ -287,7 +287,7 @@
     <span class="bee">🐝</span> BeeLead
   </div>
   <h1 id="page-title">سياسة الخصوصية</h1>
-  <p class="sub" id="page-sub">آخر تحديث: 6 نوفمبر 2026</p>
+  <p class="sub" id="page-sub">آخر تحديث: 9 نوفمبر 2026</p>
 
   <div class="lang-toggle" role="group" aria-label="Language">
     <button id="btn-ar" class="active" type="button">العربية</button>
@@ -356,6 +356,10 @@
         <li>رقم هاتف المتصل (لمكالمات واردة/صادرة/فائتة) — <em>فقط إذا منحت الإذن</em>.</li>
         <li>نوع المكالمة (واردة، صادرة، فائتة) ومدة المكالمة وتاريخها ووقتها.</li>
         <li>تُستخدَم هذه المعلومات لعرض نافذة منبثقة تسألك إن كان الرقم عميلاً محتملاً.</li>
+        <li>عند انتهاء مكالمة من رقم غير معروف وعدم حفظه فوراً، يُخزِّن التطبيق
+          الرقم مؤقتاً كـ"مكالمة معلَّقة" (مع الطابع الزمني) لمدة تصل إلى 48
+          ساعة لتتمكن من مراجعته وحفظه لاحقاً. تُحذَف المكالمات المعلَّقة التي
+          تتجاوز 48 ساعة تلقائياً.</li>
       </ul>
 
       <h3>2.2 جهات الاتصال</h3>
@@ -378,12 +382,18 @@
         <li>الاسم، رقم الهاتف، الملاحظات النصية، التصنيفات (Labels)، والتذكيرات
           التي تنشئها بنفسك.</li>
         <li>سجل المكالمات المرتبط بكل عميل محتمل.</li>
+        <li>تُطبَّع أرقام الهواتف (توحيد رمز الدولة، إزالة المسافات والتنسيق)
+          قبل التخزين، ويتم منع تكرار العملاء المحتملين تلقائياً بمطابقة
+          الرقم المطبَّع لتجنب الإدخالات المكررة.</li>
       </ul>
 
       <h3>2.5 معلومات الجهاز والتشخيص</h3>
       <ul>
         <li>طراز الجهاز، إصدار نظام Android، إصدار التطبيق.</li>
-        <li>سجلات الأخطاء والاستثناءات لأغراض التشخيص وإصلاح المشكلات فقط.</li>
+        <li>تُرسَل سجلات الأخطاء والاستثناءات إلى <strong>Firebase Crashlytics</strong>
+          (أحد منتجات Firebase) مع معرّف الجهاز المجهول، لمساعدتنا في تشخيص
+          وإصلاح الأخطاء. لا تُضمَّن أرقام الهواتف أو بيانات جهات الاتصال أو
+          محتوى العملاء في تقارير الأعطال.</li>
         <li>معرّف جهاز مجهول الهوية (Anonymous Device ID) يُولَّد عشوائياً لمنع
           تكرار تقارير الأخطاء.</li>
         <li><strong>تحليلات استخدام مجهولة الهوية</strong> عبر Firebase Analytics:
@@ -396,7 +406,21 @@
       <h3>2.6 إعدادات التطبيق</h3>
       <ul>
         <li>تفضيلات اللغة، المظهر (فاتح/داكن)، إعدادات المراقبة، وقائمة الأرقام
-          المتجاهَلة.</li>
+          المتجاهَلة (الأرقام التي اخترت "تجاهلها دائماً").</li>
+      </ul>
+
+      <h3>2.7 المشتريات والاشتراكات</h3>
+      <ul>
+        <li>يقدّم التطبيق اشتراكات مميّزة اختيارية (شهري، سنوي) وشراءً لمرة
+          واحدة (مدى الحياة)، تتم معالجتها بالكامل عبر <strong>Google Play
+          Billing</strong>. لا نُعالج أو نخزّن معلومات الدفع الخاصة بك — تتولّى
+          Google جميع عمليات الدفع والفوترة والتحقق. نتلقّى فقط تأكيد حالة
+          شرائك (مميّز مقابل مجاني) وتاريخ انتهاء الشراء. راجع
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">سياسة خصوصية Google Play</a>.</li>
+        <li>قد يُقدَّم للاشتراك الشهري والسنوي <strong>تجربة مجانية لمدة 7 أيام</strong>.
+          تُدار التجربة عبر Google Play Billing: إذا ألغيت قبل انتهاء التجربة
+          لن تُحسَب عليك أي رسوم؛ وإلا يبدأ اشتراكك تلقائياً. نخزّن فقط حالة
+          أهليتك للتجربة محلياً لتحديد الميزات التي يجب فتحها.</li>
       </ul>
 
       <h2 id="ar-3">3. الأذونات المستخدمة وأسبابها</h2>
@@ -419,12 +443,14 @@
             <tr><td><code>READ_CONTACTS</code></td><td>استيراد جهات الاتصال كعملاء محتملين.</td></tr>
             <tr><td><code>WRITE_CONTACTS</code></td><td>حفظ عميل محتمل كجهة اتصال عند طلبك.</td></tr>
             <tr><td><code>SYSTEM_ALERT_WINDOW</code></td><td>عرض نافذة منبثقة فوق شاشة المكالمة.</td></tr>
-            <tr><td><code>POST_NOTIFICATIONS</code></td><td>إشعارات المكالمات والتذكيرات (Android 13+).</td></tr>
+            <tr><td><code>POST_NOTIFICATIONS</code></td><td>إشعارات المكالمات والتذكيرات وحالة النسخ الاحتياطي وتذكيرات انتهاء التجربة وإشعارات إعادة التفاعل (Android 13+).</td></tr>
             <tr><td><code>FOREGROUND_SERVICE</code> / <code>_SPECIAL_USE</code></td><td>مراقبة المكالمات في الخلفية.</td></tr>
-            <tr><td><code>RECEIVE_BOOT_COMPLETED</code></td><td>إعادة تشغيل خدمة المراقبة بعد إعادة تشغيل الجهاز.</td></tr>
+            <tr><td><code>RECEIVE_BOOT_COMPLETED</code></td><td>إعادة تشغيل خدمة مراقبة المكالمات وإعادة تفعيل التذكيرات المجدولة بعد إعادة تشغيل الجهاز.</td></tr>
+            <tr><td><code>USE_BIOMETIC</code> / <code>USE_FINGERPRINT</code></td><td>فتح التطبيق باستخدام المستشعر الحيوي للجهاز (بصمة/وجه) عند تفعيل قفل التطبيق.</td></tr>
             <tr><td><code>SCHEDULE_EXACT_ALARM</code> / <code>USE_EXACT_ALARM</code></td><td>جدولة التذكيرات بدقة.</td></tr>
             <tr><td><code>REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</code></td><td>ضمان استمرار المراقبة في الخلفية.</td></tr>
             <tr><td><code>INTERNET</code></td><td>النسخ الاحتياطي (اختياري)، والتحقق من التحديثات.</td></tr>
+            <tr><td><code>com.android.vending.BILLING</code></td><td>معالجة الاشتراكات داخل التطبيق والشراء مدى الحياة عبر Google Play Billing.</td></tr>
           </tbody>
         </table>
       </div>
@@ -435,6 +461,10 @@
         <li>لتشغيل التذكيرات، الملاحظات النصية والصوتية، وسجل المكالمات.</li>
         <li>لتحسين استقرار التطبيق عبر سجلات الأخطاء المحلية.</li>
         <li>لمزامنة بياناتك عبر أجهزتك (فقط إذا فعّلت النسخ الاحتياطي على Drive).</li>
+        <li>لإرسال الإشعارات: تنبيهات المكالمات، التذكيرات المجدولة، حالة نجاح/
+          فشل النسخ الاحتياطي، تذكيرات انتهاء التجربة، وإشعارات إعادة التفاعل
+          الدورية. يمكنك تعطيل أي أو جميع الإشعارات من إعدادات Android ←
+          التطبيق ← BeeLead ← الإشعارات.</li>
       </ul>
       <div class="callout">
         <strong>لا نستخدم بياناتك للإعلانات، ولا نبيعها، ولا نشاركها مع أي طرف ثالث
@@ -446,8 +476,12 @@
       <h2 id="ar-5">5. تخزين البيانات وأمنها</h2>
       <ul>
         <li>تُخزَّن البيانات في قاعدة بيانات SQLite محلية داخل مساحة التطبيق الخاصة.</li>
-        <li>البيانات الحساسة (مثل رمز الأمان PIN) تُخزَّن في
-          <strong>Android Keystore / flutter_secure_storage</strong>.</li>
+        <li>يقدّم التطبيق ميزة <strong>قفل التطبيق</strong> اختيارياً: يمكنك طلب
+          رمز PIN أو المصادقة الحيوية للجهاز (بصمة/وجه) أو كليهما لفتح التطبيق.
+          يُخزَّن رمز PIN في <strong>Android Keystore / flutter_secure_storage</strong>؛
+          تُفوَّض المصادقة الحيوية إلى إطار Android Biometric — لا يتلقّى التطبيق
+          أو يخزّن بيانات بصمتك. ملاحظة: لم يعد تفعيل قفل التطبيق شرطاً
+          لاستخدام النسخ الاحتياطي على Google Drive.</li>
         <li>يتم استثناء قاعدة البيانات والسجلات من النسخ الاحتياطي التلقائي لنظام
           Android في ملفات <code>backup_rules.xml</code> و
           <code>data_extraction_rules.xml</code>.</li>
@@ -474,6 +508,20 @@
           على Drive.</li>
         <li><strong>Google Drive API</strong> — لتخزين نسخة احتياطية داخل حسابك
           الشخصي على Drive.</li>
+        <li><strong>Firebase Crashlytics</strong> — إبلاغ تلقائي عن الأعطال
+          والأخطاء لمساعدتنا في تشخيص وإصلاح مشكلات الاستقرار. تُرسَل بيانات
+          التشخيص فقط (تتبّع المكدس، طراز الجهاز، إصدار النظام، إصدار التطبيق،
+          معرّف الجهاز المجهول). راجع <a href="https://firebase.google.com/support/privacy"
+          target="_blank" rel="noopener">خصوصية Firebase</a>.</li>
+        <li><strong>Google Play Billing</strong> — يعالج الاشتراكات داخل التطبيق
+          والشراء مدى الحياة. راجع <a href="https://policies.google.com/privacy"
+          target="_blank" rel="noopener">سياسة خصوصية Google Play</a>.</li>
+        <li><strong>WhatsApp</strong> — من شاشة تفاصيل العميل المحتمل، يمكنك فتح
+          WhatsApp مع رقم هاتف ذلك العميل مُعبَّأً مسبقاً. يفتح هذا WhatsApp
+          مباشرة؛ لا تُرسَل أي بيانات إلينا أو لأي وسيط. WhatsApp خدمة منفصلة
+          تديرها Meta — راجع <a href="https://www.whatsapp.com/legal/privacy-policy"
+          target="_blank" rel="noopener">سياسة خصوصية WhatsApp</a>. لا يقرأ التطبيق
+          أو يخزّن أي محتوى من محادثات WhatsApp الخاصة بك.</li>
       </ul>
 
       <h2 id="ar-7">7. النسخ الاحتياطي على Google Drive</h2>
@@ -503,6 +551,8 @@
         <li>بيانات العملاء المحتملين: تبقى حتى تحذفها بنفسك.</li>
         <li>التسجيلات الصوتية: تبقى حتى تحذفها أو تحذف العميل المحتمل المرتبط بها.</li>
         <li>سجلات الأخطاء: تُنظَّف تلقائياً بعد 30 يوماً.</li>
+        <li>إدخالات المكالمات المعلَّقة (غير المحفوظة): تُحذَف تلقائياً بعد 48
+          ساعة ما لم تحفظها كعميل محتمل.</li>
         <li>عند حذف التطبيق: تُحذَف جميع البيانات المحلية نهائياً.</li>
       </ul>
 
@@ -603,6 +653,10 @@
         <li>Call type, duration, date, and time.</li>
         <li>This information is used to display a popup asking whether the caller
           should be saved as a lead.</li>
+        <li>When a call from an unknown number ends and you do not save it
+          immediately, the App temporarily stores the number as a "pending call"
+          (with timestamp) for up to 48 hours so you can revisit and save it
+          later. Pending calls older than 48 hours are automatically deleted.</li>
       </ul>
 
       <h3>2.2 Contacts</h3>
@@ -625,12 +679,19 @@
       <ul>
         <li>Name, phone number, text notes, labels, and reminders you create.</li>
         <li>Call history associated with each lead.</li>
+        <li>Phone numbers are normalized (country-code normalized, whitespace
+          and formatting stripped) before storage, and new leads are automatically
+          deduplicated against existing leads by their normalized phone number to
+          prevent duplicate entries.</li>
       </ul>
 
       <h3>2.5 Device &amp; Diagnostics</h3>
       <ul>
         <li>Device model, Android version, app version.</li>
-        <li>Crash and error logs — used <em>solely</em> for debugging and stability.</li>
+        <li>Crash and error logs are transmitted to <strong>Firebase Crashlytics</strong>
+          (a Firebase product) along with the anonymous device ID, to help us
+          diagnose and fix bugs. No phone numbers, contact data, or lead content
+          is included in crash reports.</li>
         <li>A randomly generated anonymous device ID to deduplicate error reports.</li>
         <li><strong>Anonymous usage analytics</strong> via Firebase Analytics:
           aggregated, non-personal event counts (e.g. <code>lead_captured</code>,
@@ -643,7 +704,23 @@
       <h3>2.6 App Settings</h3>
       <ul>
         <li>Language preference, theme (light/dark), monitoring toggles, and your
-          ignore list.</li>
+          ignore list (numbers you chose to "Always ignore").</li>
+      </ul>
+
+      <h3>2.7 Purchases &amp; Subscriptions</h3>
+      <ul>
+        <li>The App offers optional premium subscriptions (monthly, yearly) and a
+          one-time lifetime purchase, processed entirely by <strong>Google Play
+          Billing</strong>. We do not process or store your payment information —
+          Google handles all payment, billing, and receipt validation. We only
+          receive a confirmation of your purchase status (premium vs. free) and
+          the purchase expiry date. See <a href="https://policies.google.com/privacy"
+          target="_blank" rel="noopener">Google Play Privacy Policy</a>.</li>
+        <li>Monthly and yearly subscriptions may be offered with a <strong>7-day
+          free trial</strong>. The trial is managed by Google Play Billing: if you
+          cancel before the trial ends, you will not be charged; otherwise, your
+          subscription begins automatically. We only store your trial eligibility
+          status locally to decide which features to unlock.</li>
       </ul>
 
       <h2 id="en-3">3. Permissions &amp; Why We Need Them</h2>
@@ -666,12 +743,14 @@
             <tr><td><code>READ_CONTACTS</code></td><td>Import contacts as leads.</td></tr>
             <tr><td><code>WRITE_CONTACTS</code></td><td>Save a lead as a device contact on request.</td></tr>
             <tr><td><code>SYSTEM_ALERT_WINDOW</code></td><td>Show the overlay popup above the call screen.</td></tr>
-            <tr><td><code>POST_NOTIFICATIONS</code></td><td>Call &amp; reminder notifications (Android 13+).</td></tr>
+            <tr><td><code>POST_NOTIFICATIONS</code></td><td>Call notifications, reminder notifications, backup-status notifications, trial-expiry reminders, and re-engagement notifications (Android 13+).</td></tr>
             <tr><td><code>FOREGROUND_SERVICE</code> / <code>_SPECIAL_USE</code></td><td>Background call monitoring.</td></tr>
-            <tr><td><code>RECEIVE_BOOT_COMPLETED</code></td><td>Restart the monitoring service after reboot.</td></tr>
+            <tr><td><code>RECEIVE_BOOT_COMPLETED</code></td><td>Restart the call-monitoring foreground service and re-arm scheduled reminders after device reboot.</td></tr>
+            <tr><td><code>USE_BIOMETIC</code> / <code>USE_FINGERPRINT</code></td><td>Unlock the App using the device's biometric sensor (fingerprint/face) when App Lock is enabled.</td></tr>
             <tr><td><code>SCHEDULE_EXACT_ALARM</code> / <code>USE_EXACT_ALARM</code></td><td>Schedule exact reminders.</td></tr>
             <tr><td><code>REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</code></td><td>Keep monitoring alive in the background.</td></tr>
             <tr><td><code>INTERNET</code></td><td>Optional backup &amp; update checks only.</td></tr>
+            <tr><td><code>com.android.vending.BILLING</code></td><td>Process in-app subscriptions and lifetime purchase via Google Play Billing.</td></tr>
           </tbody>
         </table>
       </div>
@@ -682,6 +761,10 @@
         <li>To power reminders, text and voice notes, and the call log.</li>
         <li>To improve stability via local error logs.</li>
         <li>To sync your data across devices (only if you enable Drive backup).</li>
+        <li>To send you notifications: call-related alerts, scheduled reminders,
+          backup success/failure status, trial-expiry reminders, and occasional
+          re-engagement prompts. You can disable any or all notifications from
+          Android Settings &rarr; App &rarr; BeeLead &rarr; Notifications.</li>
       </ul>
       <div class="callout">
         <strong>We do NOT use your data for advertising, we do NOT sell it, and we
@@ -693,8 +776,13 @@
       <h2 id="en-5">5. Data Storage &amp; Security</h2>
       <ul>
         <li>Data is stored in a local SQLite database inside the App's private sandbox.</li>
-        <li>Sensitive data (such as the security PIN) is stored in
-          <strong>Android Keystore / flutter_secure_storage</strong>.</li>
+        <li>The App offers an optional <strong>App Lock</strong> feature: you can
+          require a PIN, device biometric (fingerprint/face), or both to unlock
+          the App. The PIN is stored in <strong>Android Keystore /
+          flutter_secure_storage</strong>; biometric authentication is delegated
+          to the Android Biometric framework — the App never receives or stores
+          your fingerprint data. Note: enabling App Lock is no longer required
+          to use Google Drive backup.</li>
         <li>The database and logs are excluded from Android's automatic backup via
           <code>backup_rules.xml</code> and <code>data_extraction_rules.xml</code>.</li>
         <li>Your personal data (contacts, leads, notes, recordings) is <strong>never</strong>
@@ -718,6 +806,21 @@
         <li><strong>Google Sign-In</strong> — only when you sign in for Drive backup.</li>
         <li><strong>Google Drive API</strong> — to store backups inside your own
           Google account.</li>
+        <li><strong>Firebase Crashlytics</strong> — automatic crash and error
+          reporting to help us diagnose and fix stability issues. Only diagnostic
+          data (stack traces, device model, OS version, app version, anonymous
+          device ID) is sent. See <a href="https://firebase.google.com/support/privacy"
+          target="_blank" rel="noopener">Firebase Privacy</a>.</li>
+        <li><strong>Google Play Billing</strong> — processes in-app subscriptions
+          and the lifetime purchase. See <a href="https://policies.google.com/privacy"
+          target="_blank" rel="noopener">Google Play Privacy Policy</a>.</li>
+        <li><strong>WhatsApp</strong> — from a lead's detail screen, you can open
+          WhatsApp pre-filled with that lead's phone number. This launches
+          WhatsApp directly; no data is sent to us or to any intermediary.
+          WhatsApp is a separate service operated by Meta — see <a
+          href="https://www.whatsapp.com/legal/privacy-policy"
+          target="_blank" rel="noopener">WhatsApp Privacy Policy</a>. The App does
+          not read or store any content from your WhatsApp conversations.</li>
       </ul>
 
       <h2 id="en-7">7. Google Drive Backup</h2>
@@ -747,6 +850,8 @@
         <li>Lead data: kept until you delete it.</li>
         <li>Voice recordings: kept until you delete them or the associated lead.</li>
         <li>Error logs: automatically cleaned after 30 days.</li>
+        <li>Pending (unsaved) call entries: automatically deleted after 48 hours
+          unless you save them as a lead.</li>
         <li>Uninstalling the App permanently removes all local data.</li>
       </ul>
 
@@ -853,6 +958,11 @@
         <li>Tipo de llamada, duración, fecha y hora.</li>
         <li>Esta información se utiliza para mostrar una ventana emergente
           preguntándote si el llamante debe guardarse como cliente potencial.</li>
+        <li>Cuando termina una llamada de un número desconocido y no la guardas
+          inmediatamente, la Aplicación almacena temporalmente el número como
+          "llamada pendiente" (con marca de tiempo) hasta por 48 horas para que
+          puedas revisarla y guardarla más tarde. Las llamadas pendientes de más
+          de 48 horas se eliminan automáticamente.</li>
       </ul>
 
       <h3>2.2 Contactos</h3>
@@ -876,13 +986,20 @@
         <li>Nombre, número de teléfono, notas de texto, etiquetas y recordatorios
           que tú creas.</li>
         <li>Historial de llamadas asociado a cada cliente potencial.</li>
+        <li>Los números de teléfono se normalizan (código de país normalizado,
+          espacios y formato eliminados) antes de almacenarse, y los nuevos
+          clientes potenciales se deduplican automáticamente contra los existentes
+          por su número normalizado para evitar entradas duplicadas.</li>
       </ul>
 
       <h3>2.5 Dispositivo y Diagnóstico</h3>
       <ul>
         <li>Modelo del dispositivo, versión de Android, versión de la aplicación.</li>
-        <li>Registros de fallos y errores — utilizados <em>únicamente</em> para
-          depuración y estabilidad.</li>
+        <li>Los registros de fallos y errores se transmiten a <strong>Firebase
+          Crashlytics</strong> (un producto de Firebase) junto con el ID anónimo
+          del dispositivo, para ayudarnos a diagnosticar y corregir errores. No
+          se incluyen números de teléfono, datos de contactos ni contenido de
+          clientes en los informes de fallos.</li>
         <li>Un ID de dispositivo anónimo generado aleatoriamente para deduplicar
           informes de errores.</li>
         <li><strong>Analíticas de uso anónimas</strong> vía Firebase Analytics:
@@ -896,7 +1013,24 @@
       <h3>2.6 Configuración de la Aplicación</h3>
       <ul>
         <li>Preferencia de idioma, tema (claro/oscuro), opciones de monitoreo y tu
-          lista de números ignorados.</li>
+          lista de números ignorados (números que elegiste "ignorar siempre").</li>
+      </ul>
+
+      <h3>2.7 Compras y Suscripciones</h3>
+      <ul>
+        <li>La Aplicación ofrece suscripciones premium opcionales (mensual, anual)
+          y una compra única de por vida, procesadas enteramente por <strong>Google
+          Play Billing</strong>. No procesamos ni almacenamos tu información de
+          pago — Google maneja todo el pago, facturación y validación de recibos.
+          Solo recibimos confirmación de tu estado de compra (premium vs. gratis)
+          y la fecha de vencimiento. Ver <a href="https://policies.google.com/privacy"
+          target="_blank" rel="noopener">Política de Privacidad de Google Play</a>.</li>
+        <li>Las suscripciones mensual y anual pueden ofrecerse con una <strong>prueba
+          gratuita de 7 días</strong>. La prueba es gestionada por Google Play
+          Billing: si cancelas antes de que termine la prueba, no se te cobrará;
+          de lo contrario, tu suscripción comienza automáticamente. Solo
+          almacenamos tu elegibilidad para la prueba localmente para decidir
+          qué funciones desbloquear.</li>
       </ul>
 
       <h2 id="es-3">3. Permisos y por qué los necesitamos</h2>
@@ -919,12 +1053,14 @@
             <tr><td><code>READ_CONTACTS</code></td><td>Importar contactos como clientes potenciales.</td></tr>
             <tr><td><code>WRITE_CONTACTS</code></td><td>Guardar un cliente potencial como contacto del dispositivo cuando lo solicitas.</td></tr>
             <tr><td><code>SYSTEM_ALERT_WINDOW</code></td><td>Mostrar la ventana emergente sobre la pantalla de llamada.</td></tr>
-            <tr><td><code>POST_NOTIFICATIONS</code></td><td>Notificaciones de llamadas y recordatorios (Android 13+).</td></tr>
+            <tr><td><code>POST_NOTIFICATIONS</code></td><td>Notificaciones de llamadas, recordatorios, estado de copia de seguridad, recordatorios de vencimiento de prueba y notificaciones de re-interacción (Android 13+).</td></tr>
             <tr><td><code>FOREGROUND_SERVICE</code> / <code>_SPECIAL_USE</code></td><td>Monitoreo de llamadas en segundo plano.</td></tr>
-            <tr><td><code>RECEIVE_BOOT_COMPLETED</code></td><td>Reiniciar el servicio de monitoreo después de reiniciar el dispositivo.</td></tr>
+            <tr><td><code>RECEIVE_BOOT_COMPLETED</code></td><td>Reiniciar el servicio de monitoreo de llamadas en primer plano y rearmar recordatorios programados después de reiniciar el dispositivo.</td></tr>
+            <tr><td><code>USE_BIOMETIC</code> / <code>USE_FINGERPRINT</code></td><td>Desbloquear la Aplicación usando el sensor biométrico del dispositivo (huella/cara) cuando el Bloqueo de App está activado.</td></tr>
             <tr><td><code>SCHEDULE_EXACT_ALARM</code> / <code>USE_EXACT_ALARM</code></td><td>Programar recordatorios exactos.</td></tr>
             <tr><td><code>REQUEST_IGNORE_BATTERY_OPTIMIZATIONS</code></td><td>Mantener el monitoreo activo en segundo plano.</td></tr>
             <tr><td><code>INTERNET</code></td><td>Solo para copia de seguridad opcional y comprobación de actualizaciones.</td></tr>
+            <tr><td><code>com.android.vending.BILLING</code></td><td>Procesar suscripciones dentro de la aplicación y compra de por vida vía Google Play Billing.</td></tr>
           </tbody>
         </table>
       </div>
@@ -938,6 +1074,11 @@
         <li>Para mejorar la estabilidad mediante registros de errores locales.</li>
         <li>Para sincronizar tus datos entre dispositivos (solo si activas la copia
           de seguridad en Drive).</li>
+        <li>Para enviarte notificaciones: alertas de llamadas, recordatorios
+          programados, estado de éxito/fallo de copia de seguridad,
+          recordatorios de vencimiento de prueba y notificaciones periódicas
+          de re-interacción. Puedes desactivar todas o algunas notificaciones
+          desde Ajustes de Android → Aplicación → BeeLead → Notificaciones.</li>
       </ul>
       <div class="callout">
         <strong>NO utilizamos tus datos para publicidad, NO los vendemos, y NO los
@@ -951,8 +1092,13 @@
       <ul>
         <li>Los datos se almacenan en una base de datos SQLite local dentro del
           entorno privado de la Aplicación.</li>
-        <li>Los datos sensibles (como el PIN de seguridad) se almacenan en
-          <strong>Android Keystore / flutter_secure_storage</strong>.</li>
+        <li>La Aplicación ofrece una función opcional de <strong>Bloqueo de App</strong>:
+          puedes requerir un PIN, biometría del dispositivo (huella/cara), o ambos
+          para desbloquear la Aplicación. El PIN se almacena en <strong>Android
+          Keystore / flutter_secure_storage</strong>; la autenticación biométrica
+          se delega al framework Android Biometric — la Aplicación nunca recibe
+          ni almacena tus datos de huella. Nota: activar el Bloqueo de App ya no
+          es necesario para usar la copia de seguridad de Google Drive.</li>
         <li>La base de datos y los registros están excluidos de la copia de seguridad
           automática de Android mediante <code>backup_rules.xml</code> y
           <code>data_extraction_rules.xml</code>.</li>
@@ -981,6 +1127,23 @@
           copia de seguridad en Drive.</li>
         <li><strong>Google Drive API</strong> — para almacenar copias de seguridad
           dentro de tu propia cuenta de Google.</li>
+        <li><strong>Firebase Crashlytics</strong> — reporte automático de fallos
+          y errores para ayudarnos a diagnosticar y corregir problemas de
+          estabilidad. Solo se envían datos de diagnóstico (rastros de pila,
+          modelo de dispositivo, versión de SO, versión de la aplicación, ID
+          anónimo de dispositivo). Ver <a href="https://firebase.google.com/support/privacy"
+          target="_blank" rel="noopener">Privacidad de Firebase</a>.</li>
+        <li><strong>Google Play Billing</strong> — procesa suscripciones dentro
+          de la aplicación y la compra de por vida. Ver <a href="https://policies.google.com/privacy"
+          target="_blank" rel="noopener">Política de Privacidad de Google Play</a>.</li>
+        <li><strong>WhatsApp</strong> — desde la pantalla de detalles del cliente,
+          puedes abrir WhatsApp con el número de teléfono del cliente prellenado.
+          Esto inicia WhatsApp directamente; no se envían datos a nosotros ni a
+          ningún intermediario. WhatsApp es un servicio separado operado por
+          Meta — ver <a href="https://www.whatsapp.com/legal/privacy-policy"
+          target="_blank" rel="noopener">Política de Privacidad de WhatsApp</a>.
+          La Aplicación no lee ni almacena ningún contenido de tus conversaciones
+          de WhatsApp.</li>
       </ul>
 
       <h2 id="es-7">7. Copia de Seguridad en Google Drive</h2>
@@ -1014,6 +1177,9 @@
         <li>Grabaciones de voz: se conservan hasta que las elimines o elimines el
           cliente potencial asociado.</li>
         <li>Registros de errores: se limpian automáticamente después de 30 días.</li>
+        <li>Entradas de llamadas pendientes (no guardadas): se eliminan
+          automáticamente después de 48 horas a menos que las guardes como
+          cliente potencial.</li>
         <li>Al desinstalar la Aplicación, todos los datos locales se eliminan
           permanentemente.</li>
       </ul>
@@ -1071,9 +1237,9 @@
 <script>
   // ── Page title & subtitle per language ───────────────────────────
   const PAGE_TITLES = {
-    ar: { title: 'سياسة الخصوصية', sub: 'آخر تحديث: 6 نوفمبر 2026' },
-    en: { title: 'Privacy Policy',  sub: 'Last updated: November 6, 2026' },
-    es: { title: 'Política de Privacidad', sub: 'Última actualización: 6 de noviembre de 2026' }
+    ar: { title: 'سياسة الخصوصية', sub: 'آخر تحديث: 9 نوفمبر 2026' },
+    en: { title: 'Privacy Policy',  sub: 'Last updated: November 9, 2026' },
+    es: { title: 'Política de Privacidad', sub: 'Última actualización: 9 de noviembre de 2026' }
   };
 
   const LANGS   = ['ar', 'en', 'es'];
